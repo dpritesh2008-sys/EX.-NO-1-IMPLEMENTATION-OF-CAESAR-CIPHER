@@ -1,5 +1,8 @@
 # EX. NO: 1(A) : IMPLEMENTATION OF CAESAR CIPHER
-
+~~~
+## Reg. No. : 212225040339
+## Name : Ritesh DP
+~~~
 ## AIM:
 To implement the simple substitution technique named Caesar cipher using C language.
 
@@ -16,8 +19,104 @@ STEP-4: Else subtract the key from the plain text.
 STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
+~~~
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher Program</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #cccccc;
+        }
+
+        textarea, input, button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #result {
+            overflow-wrap: anywhere;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Caesar Cipher</h1>
+        <p>Encrypt and decrypt messages easily.</p>
+
+        <textarea id="message" placeholder="Enter your message"></textarea>
+
+        <input type="number" id="shift" value="3"
+               placeholder="Enter shift value">
+
+        <button onclick="processMessage(1)">Encrypt</button>
+        <button onclick="processMessage(-1)">Decrypt</button>
+
+        <h3>Result</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function caesarCipher(text, shift) {
+            return text.replace(/[a-z]/gi, function(char) {
+                const base = char === char.toUpperCase() ? 65 : 97;
+
+                return String.fromCharCode(
+                    ((char.charCodeAt(0) - base + shift) % 26 + 26) % 26
+                    + base
+                );
+            });
+        }
+
+        function processMessage(direction) {
+            const message =
+                document.getElementById("message").value;
+
+            const shift =
+                Number(document.getElementById("shift").value);
+
+            const result = caesarCipher(
+                message,
+                direction * ((shift % 26 + 26) % 26)
+            );
+
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>
+~~~
 ## OUTPUT:
+
+<img width="630" height="682" alt="image" src="https://github.com/user-attachments/assets/d6ceb859-c58d-47d0-8e2d-9effefaefe18" />
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
